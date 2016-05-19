@@ -1,0 +1,173 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout android:layout_width="fill_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.einatraveh.mymovies.EditMovieAct"
+    android:background="@drawable/for_bg_neg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <!--<ScrollView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:id="@+id/scrollView" >-->
+
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="fill">-->
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTitle"
+                android:hint="@string/activity_edit_movie_editTitle"
+                android:textColorHint="#ffffffff"
+                android:textColor="#ffffffff" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editPlot"
+                android:hint="@string/activity_edit_movie_editPlot"
+                android:textColorHint="#ffffffff"
+                android:textColor="#ffffffff" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/picUrlEdit"
+                    android:layout_weight="1"
+                    android:hint="@string/activity_edit_movie_picUrlEdit"
+                    android:singleLine="true"
+                    android:textColorHint="#ffffffff"
+                    android:textColor="#ffffffff" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_edit_movie_btnShow"
+                    android:id="@+id/btnShow"
+                    android:layout_weight="0.2" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnPic"
+                    android:background="@android:drawable/ic_menu_camera"
+                    android:layout_weight="0.3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/yearEdit"
+                        android:hint="@string/activity_edit_movie_yearEdit"
+                        android:textColorHint="#ffffffff"
+                        android:textColor="#ffffffff" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lengthEdit"
+                        android:hint="@string/activity_edit_movie_lengthEdit"
+                        android:textColorHint="#ffffffff"
+                        android:textColor="#ffffffff" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_edit_movie_watched_check"
+                        android:id="@+id/wchCheck"
+                        android:checked="false"
+                        android:textColor="#ffffffff"
+                        android:buttonTint="#ffffffff" />
+
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:id="@+id/ratingBar"
+                        android:isIndicator="false"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnCancel"
+                        android:layout_gravity="left|bottom"
+                        android:layout_weight="1"
+                        android:text="@string/activity_edit_movie_btnCancle" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnShare"
+                        android:layout_weight="1"
+                        android:text="@string/activity_edit_movie_btnShare" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnSave"
+                        android:layout_weight="1"
+                        android:text="@string/activity_edit_movie_btnOK" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+</LinearLayout>
+    <!--</ScrollView>-->
+
+
+<!--</LinearLayout>-->
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/posterView"
+        android:layout_gravity="center|right"
+        android:layout_weight="1"
+        android:padding="30dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnClosePic"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@android:drawable/ic_menu_close_clear_cancel" />
+</FrameLayout>

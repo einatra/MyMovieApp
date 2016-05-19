@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string name="app_name">הסרטים שלי</string>
+
+        <string name="hello_world">Hello world!</string>
+        <string name="action_settings">הגדרות</string>
+        <string name="title_activity_edit_movie">הוסף סרט</string>
+        <string name="title_activity_search">חפש סרט</string>
+        <string name="movie_list_item__textTitle">שם סרט</string>
+        <string name="movie_list_item_textLength">אורך</string>
+        <string name="activity_edit_movie_editTitle">שם סרט</string>
+        <string name="activity_edit_movie_editPlot">תקציר העלילה</string>
+        <string name="activity_edit_movie_picUrlEdit">קישור לפוסטר</string>
+        <string name="activity_edit_movie_btnShow">הצג</string>
+        <string name="activity_edit_movie_yearEdit">שנה</string>
+    <string name="activity_edit_movie_watched_check">נצפה</string>
+        <string name="activity_edit_movie_lengthEdit">אורך</string>
+        <string name="activity_edit_movie_btnCancle">בטל</string>
+        <string name="activity_edit_movie_btnShare">שתף</string>
+        <string name="activity_edit_movie_btnOK">שמור</string>
+        <string name="activity_main_btnAdd">הוסף סרט</string>
+        <string name="activity_search_editSearch">הכנס מילת חיפוש</string>
+        <string name="activity_search_btnGo">חפש</string>
+        <string name="activity_search_btnCancel">בטל</string>
+        <string name="movie_list_item__textWatched">New Text</string>
+        <string name="MainActivity_dialog.setTitle">הוספת סרט</string>
+        <string name="MainActivity_dialog_setMessage">איך תרצה להוסיף את הסרט?</string>
+        <string name="MainActivity_dialog_btnP">מהאינטרנט</string>
+        <string name="MainActivity_dialog_btnN">ידנית</string>
+        <string name="MainActivity_deleteDialogTitle">מחיקה\\עריכה</string>
+        <string name="MainActivity_deleteDialogMessage">האם תרצה לערוך או למחוק את הסרט?</string>
+        <string name="MainActivity_deleteDialog_btnP">עריכה</string>
+        <string name="MainActivity_deleteDialog_btnN">מחיקה</string>
+        <string name="MainActivity_delAllDialog_title">בטוח\ה?</string>
+        <string name="MainActivity_delAllDialog_msg">פעולה זו תמחק את כל הרשומות</string>
+        <string name="MainActivity_delAllDialog_btnP">מחק</string>
+        <string name="MainActivity_delAllDialog_btnN">בטל</string>
+        <string name="EditMovieAct_ToastTitle">שדה כותרת חייב להיות מלא!</string>
+        <string name="EditMovieAct_ToastImage">שדה הקישור ריק!</string>
+        <string name="EditMovieAct_ToastNoData">אין מידע :(</string>
+        <string name="EditMovieAct_ToastProb">בעייה בהורדת התמונה, נסה שנית מאוחר יותר</string>
+        <string name="EditMovieAct_loadImgDialog_msg">טוען...</string>
+        <string name="EditMovieAct_fillDialog_title">מקבל מידע</string>
+        <string name="EditMovieAct_fillDialog_msg">אנא להמתין</string>
+        <string name="menu_main_delAllItem">מחק את כל הרשומות</string>
+        <string name="menu_main_filter">סנן</string>
+        <string name="menu_main_watched">נצפה</string>
+        <string name="menu_main_not_watched">לא נצפה</string>
+        <string name="menu_main__show_all">הצג הכל</string>
+        <string name="menu_main_exit">יציאה</string>
+        <string name="menu_main_lang">עברית/אנגלית</string>
+        <string name="manifest_app_name">הסרטים שלי</string>
+        <string name="manifest_title_main">ההסרטים שלי</string>
+        <string name="manifest_title_edit_act">ערוך סרט</string>
+        <string name="manifest_title_search_act">חפש סרט</string>
+    <string name="search_act_loding_dialog_title">טוען סרטים</string>
+    <string name="search_act_loding_dialog_msg">נא להמתין...</string>
+    <string name="search_act_no_movie_toast">אין תוצאות, נסה מילת חיפוש שונה</string>
+    <string name="search_act_no_keyword_toast">שדה החיפוש ריק...</string>
+    <string name="activity_main_welcomeText">הכנס\י לספריית הסרטים הביתית שלך!</string>
+
+
+</resources>

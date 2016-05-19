@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/action_delete" android:title="@string/menu_main_delAllItem"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_filter"
+        android:title="@string/menu_main_filter"
+        app:showAsAction="always">
+
+        <menu>
+
+            <item android:id="@+id/action_filter_watched"
+                android:title="@string/menu_main_watched"
+                app:showAsAction="never"/>
+            <item android:id="@+id/action_filter_not_watched"
+                    android:title="@string/menu_main_not_watched"
+                     app:showAsAction="never"/>
+            <item android:id="@+id/action_filter_all"
+                android:title="@string/menu_main__show_all"
+                app:showAsAction="never"/>
+
+        </menu>
+
+    </item>
+
+    <item android:id="@+id/action_exit"
+        android:title="@string/menu_main_exit"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_language"
+        android:title="@string/menu_main_lang"
+        app:showAsAction="never"/>
+
+</menu>

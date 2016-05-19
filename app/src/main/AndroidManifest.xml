@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.einat.mymovieapp" >
+    <!-- internet permission -->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <!-- camera permission -->
+    <uses-feature android:name="android.permission.camera" android:required="false" />
+    <!-- permission for writing to the external storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/manifest_app_name"
+        android:theme="@style/Theme.MyAppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/manifest_title_main"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EditMovieAct"
+            android:label="@string/manifest_title_edit_act" >
+        </activity>
+        <activity
+            android:name=".SearchAct"
+            android:label="@string/manifest_title_search_act" >
+        </activity>
+    </application>
+
+</manifest>
