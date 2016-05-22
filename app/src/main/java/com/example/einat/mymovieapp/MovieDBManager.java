@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
-import java.util.ArrayList;
-
 /**
  * Created by jbt on 19/05/2015.
  */
@@ -70,6 +67,14 @@ public class MovieDBManager extends SQLiteOpenHelper {
         db.update(MOVIE_TABLE, values, MOVIE_ID_COL + "=" + id, null);
         db.close();
 
+    }
+
+    public void updatePosterUri(String title, String path){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(MOVIE_IMG_URL_COL, path);
+        db.update(MOVIE_TABLE, values, MOVIE_TITLE_COL + "=" + title, null);
+        db.close();
     }
 
     public Cursor getAllMovies(){

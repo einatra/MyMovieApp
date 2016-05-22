@@ -40,113 +40,138 @@
                 android:textColorHint="#ffffffff"
                 android:textColor="#ffffffff" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/picUrlEdit"
-                    android:layout_weight="1"
-                    android:hint="@string/activity_edit_movie_picUrlEdit"
-                    android:singleLine="true"
-                    android:textColorHint="#ffffffff"
-                    android:textColor="#ffffffff" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_edit_movie_btnShow"
-                    android:id="@+id/btnShow"
-                    android:layout_weight="0.2" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnPic"
-                    android:background="@android:drawable/ic_menu_camera"
-                    android:layout_weight="0.3" />
-
-            </LinearLayout>
-
-            <LinearLayout
+    <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:baselineAligned="false">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/yearEdit"
-                        android:hint="@string/activity_edit_movie_yearEdit"
-                        android:textColorHint="#ffffffff"
-                        android:textColor="#ffffffff" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/lengthEdit"
-                        android:hint="@string/activity_edit_movie_lengthEdit"
-                        android:textColorHint="#ffffffff"
-                        android:textColor="#ffffffff" />
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/activity_edit_movie_watched_check"
-                        android:id="@+id/wchCheck"
-                        android:checked="false"
-                        android:textColor="#ffffffff"
-                        android:buttonTint="#ffffffff" />
-
-                    <RatingBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="?android:attr/ratingBarStyleIndicator"
-                        android:id="@+id/ratingBar"
-                        android:isIndicator="false"/>
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:baselineAligned="false"
-                    android:layout_gravity="bottom"
-                    android:gravity="bottom">
+                    android:layout_height="wrap_content">
 
-                    <Button
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/btnCancel"
-                        android:layout_gravity="left|bottom"
-                        android:layout_weight="1"
-                        android:text="@string/activity_edit_movie_btnCancle" />
+                        android:layout_height="wrap_content">
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/btnShare"
-                        android:layout_weight="1"
-                        android:text="@string/activity_edit_movie_btnShare" />
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/yearEdit"
+                            android:hint="@string/activity_edit_movie_yearEdit"
+                            android:textColorHint="#ffffffff"
+                            android:textColor="#ffffffff" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/btnSave"
-                        android:layout_weight="1"
-                        android:text="@string/activity_edit_movie_btnOK" />
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lengthEdit"
+                            android:hint="@string/activity_edit_movie_lengthEdit"
+                            android:textColorHint="#ffffffff"
+                            android:textColor="#ffffffff" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/activity_edit_movie_watched_check"
+                            android:id="@+id/wchCheck"
+                            android:checked="false"
+                            android:textColor="#ffffffff"
+                            android:buttonTint="#ffffffff" />
+
+                        <RatingBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="?android:attr/ratingBarStyleIndicator"
+                            android:id="@+id/ratingBar"
+                            android:isIndicator="false"
+                            android:layout_marginTop="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:id="@+id/imgIcon"
+                            android:src="@drawable/no_image"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_horizontal" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp">
+
+                            <!--<EditText-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:id="@+id/picUrlEdit"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:hint="@string/activity_edit_movie_picUrlEdit"-->
+                                <!--android:singleLine="true"-->
+                                <!--android:textColorHint="#ffffffff"-->
+                                <!--android:textColor="#ffffffff" />-->
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/btnDownload"
+                                android:layout_weight="2"
+                                android:background="@android:drawable/stat_sys_download" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/btnPic"
+                                android:background="@android:drawable/ic_menu_camera"
+                                android:layout_weight="2" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+        android:gravity="bottom"
+        android:layout_weight="1">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnCancel"
+                    android:layout_gravity="left|bottom"
+                    android:layout_weight="1"
+                    android:text="@string/activity_edit_movie_btnCancle" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnShare"
+                    android:layout_weight="1"
+                    android:text="@string/activity_edit_movie_btnShare" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnSave"
+                    android:layout_weight="1"
+                    android:text="@string/activity_edit_movie_btnOK" />
             </LinearLayout>
 
 </LinearLayout>

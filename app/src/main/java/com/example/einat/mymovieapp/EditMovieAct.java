@@ -23,21 +23,21 @@ import com.example.einat.mymovieapp.utils.AppHelper;
 import com.example.einat.mymovieapp.utils.InterfaceBank;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
 public class EditMovieAct extends ActionBarActivity implements View.OnClickListener {
 
     private ImageView poster;
     private MovieDBManager manager;
     private long id;
-    private EditText editTitle,editPlot, editUrl, editYear, editLength;
+    private EditText editTitle,editPlot,editYear, editLength;
+    private ImageView imgIcon;
     private RatingBar ratingBar;
     private CheckBox watched;
     private Button btnClosePic, btnTakePic;
     private int checked = 0;
     private int key = 0;
     private Movie movie;
-    private String title;
+    private String title, imgPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
                     public void onFillTaskComplete(String title, String plot, String imgURL, String year, String length, float rating) {
                         editTitle.setText(title);
                         editPlot.setText(plot);
-                        editUrl.setText(imgURL);
+                        imgPath = imgURL;
                         editYear.setText(year);
                         editLength.setText(length);
                         ratingBar.setRating(rating / 2f);
@@ -102,15 +102,16 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
     private void setOnClickListeners() {
         findViewById(R.id.btnSave).setOnClickListener(this);
         findViewById(R.id.btnCancel).setOnClickListener(this);
-        findViewById(R.id.btnShow).setOnClickListener(this);
+        findViewById(R.id.btnDownload).setOnClickListener(this);
         findViewById(R.id.wchCheck).setOnClickListener(this);
         findViewById(R.id.btnShare).setOnClickListener(this);
+        imgIcon.setOnClickListener(this);
     }
 
     private void findViews() {
         editTitle = (EditText) findViewById(R.id.editTitle);
         editPlot = (EditText) findViewById(R.id.editPlot);
-        editUrl = (EditText) findViewById(R.id.picUrlEdit);
+        imgIcon = (ImageView) findViewById(R.id.imgIcon);
         editYear = (EditText) findViewById(R.id.yearEdit);
         editLength = (EditText) findViewById(R.id.lengthEdit);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
@@ -133,9 +134,6 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
 
             case (R.id.btnSave):
 
-                //create movie obj
-                // title = editTitle.getText().toString();
-
                 if (!title.equals("")) {
                     getMovieDetails();
                     if (key == 2) {
@@ -151,16 +149,20 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
                     Toast.makeText(EditMovieAct.this, getString(R.string.EditMovieAct_ToastTitle), Toast.LENGTH_LONG).show();
                 break;
 
-            case (R.id.btnShow):
-                String pointer = editUrl.getText().toString();
-                if (pointer.equals("") || pointer.length() < 4) {
+            case (R.id.btnDownload):
+                //if img path is empty show toast
+                if (imgPath.equals("") || imgPath.length() < 4) {
                     Toast.makeText(EditMovieAct.this, getString(R.string.EditMovieAct_ToastImage), Toast.LENGTH_LONG).show();
                 } else {
-                    String http = pointer.substring(0, 4);
+                    String http = imgPath.substring(0, 4);
+                    //if imgPath is a url download it
                     if (http.equals("http")) {
-                        showPosterFromNet(pointer);
+                        Log.i("called", "showPosterFromNet");
+                        showPosterFromNet(imgPath);
                     } else {
-                        AppHelper.getPosterFromPhone(pointer, this, poster, btnClosePic);
+                        //already downloaded - get from phone memory
+                        Log.i("called", "getPosterFromPhone");
+                        AppHelper.getPosterFromPhone(imgPath, this, poster, btnClosePic);
                     }
                 }
                 break;
@@ -194,6 +196,11 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
             case (R.id.btnClosePic):
                 poster.setVisibility(View.GONE);
                 btnClosePic.setVisibility(View.GONE);
+                break;
+            case (R.id.imgIcon):
+                if (imgPath != ""){
+                    AppHelper.getPosterFromPhone(imgPath, this, poster, btnClosePic);
+                }
         }
     }
 
@@ -201,9 +208,11 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
         DownloadImageTask task = new DownloadImageTask(this, movie, new InterfaceBank.DownloadImageTaskCallBack() {
             @Override
             public void onDownloadImageTaskComplete(Context context, Bitmap result) {
+                Log.i("showPosterFromNet", result.toString());
                 if (result != null) {
                     poster.setImageBitmap(result);
-                    AppHelper.saveToExternalStorage(context, result, title);
+                    imgIcon.setImageBitmap(result);
+                    imgPath = AppHelper.saveToExternalStorage(context, result, title);
                 } else {
                     Toast.makeText(context, getString(R.string.EditMovieAct_ToastProb), Toast.LENGTH_LONG).show();
                 }
@@ -219,10 +228,11 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
         Movie movie = manager.getMovieByID(id);
         editTitle.setText(movie.getTitle());
         editPlot.setText(movie.getPlot());
-        editUrl.setText(movie.getImgUrl());
+        imgPath = movie.getImgUrl();
         editYear.setText(movie.getYear());
         editLength.setText(movie.getLength());
         ratingBar.setRating(movie.getRating());
+        AppHelper.getPosterFromPhone(imgPath, this, imgIcon, null);
         if (movie.getWatched() == 1) {
             watched.setChecked(true);
         } else {
@@ -232,12 +242,11 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
 
     private void getMovieDetails() {
         String plot = editPlot.getText().toString();
-        String imgUrl = editUrl.getText().toString();
         String year = editYear.getText().toString();
         String length = editLength.getText().toString();
         float rating = ratingBar.getRating();
         int watched = checked;
-        movie = new Movie(title, plot, imgUrl, year, length, rating, watched);
+        movie = new Movie(title, plot, imgPath, year, length, rating, watched);
     }
 
     @Override
@@ -251,43 +260,16 @@ public class EditMovieAct extends ActionBarActivity implements View.OnClickListe
 
                     Bitmap photo = (Bitmap) data.getExtras().get("data");
                     poster.setImageBitmap(photo);
-
+                    imgIcon.setImageBitmap(photo);
                     //get Uri from bitmap
                     Uri tempUri = AppHelper.getImgUri(getApplicationContext(), photo);
-
                     //get the actual file path
                     File theFile = new File(AppHelper.getRealPathFromUri(getApplicationContext(), tempUri));
-                    editUrl.setText(theFile.toString());
+                    imgPath = theFile.toString();
                 }
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-
-    public void saveToExternalStorage(Bitmap bitmap, String filename) {
-
-        if (AppHelper.isExternalStorageWritable()) {
-
-            File folder = AppHelper.getAlbumStorageDir(this);
-
-            String posterPath = folder.getAbsoluteFile() + filename + ".jpg";
-            File file = new File(posterPath);
-            if (file.exists()) {
-                Log.i("file", "file already exists");
-            } else {
-
-                try {
-                    FileOutputStream out = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-                    out.flush();
-                    out.close();
-                    Log.i("file", "file stored successfully");
-                    editUrl.setText(posterPath);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 }

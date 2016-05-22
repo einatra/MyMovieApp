@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.einat.mymovieapp.MovieDBManager;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -93,23 +95,22 @@ public final class AppHelper {
                 if (btn != null){
                 btn.setVisibility(View.VISIBLE);
                 }
-
             }
         } catch (Exception e) {
             Log.i("btnShow", "unresolved camera app");
         }
     }
 
-    public static void saveToExternalStorage(Context context, Bitmap bitmap, String filename /*EditText editUrl*/) {
-
+    public static String saveToExternalStorage(Context context, Bitmap bitmap, String filename /*EditText editUrl*/) {
+        String posterPath = "";
         if (AppHelper.isExternalStorageWritable()) {
 
             File folder = AppHelper.getAlbumStorageDir(context);
-
-            String posterPath = folder.getAbsoluteFile() + filename + ".jpg";
+            posterPath = folder.getAbsoluteFile() + filename + ".jpg";
+            Log.i("saveToExternalStorage", posterPath);
             File file = new File(posterPath);
             if (file.exists()) {
-                Log.i("file", "file already exists");
+                Log.i("saveToExternalStorage", "file already exists");
             } else {
 
                 try {
@@ -117,12 +118,15 @@ public final class AppHelper {
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
                     out.flush();
                     out.close();
-                    Log.i("file", "file stored successfully");
+                    Log.i("saveToExternalStorage", "file stored successfully");
+                    MovieDBManager dbManager = new MovieDBManager(context, 1);
+                    dbManager.updatePosterUri(filename, posterPath);
                    // editUrl.setText(posterPath);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
+        return posterPath;
     }
 }

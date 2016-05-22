@@ -10,7 +10,8 @@
     <string name="activity_edit_movie_editTitle">Title</string>
     <string name="activity_edit_movie_editPlot">Plot Summary</string>
     <string name="activity_edit_movie_picUrlEdit">Poster URL</string>
-    <string name="activity_edit_movie_btnShow">show</string>
+    <string name="activity_edit_movie_btnShow">See Poster</string>
+    <string name="activity_edit_movie_btnDownload">Download Movie Poster</string>
     <string name="activity_edit_movie_yearEdit">Year</string>
     <string name="activity_edit_movie_watched_check">Watched</string>
     <string name="activity_edit_movie_lengthEdit">Length</string>
